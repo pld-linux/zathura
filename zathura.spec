@@ -1,11 +1,12 @@
 Summary:	A vi-like pdf reader
 Name:		zathura
-Version:	0.0.8.1
+Version:	0.0.8.2
 Release:	1
 License:	BSD-like
 Group:		Applications
-Source0:	http://pwmt.org/attachments/download/10/%{name}-%{version}.tar.gz
-# Source0-md5:	67351e5ab66cfdda9a71c9ce6c47a970
+Source0:	http://pwmt.org/attachments/download/31/%{name}-%{version}.tar.gz
+# Source0-md5:	b63750f8993e0f139162101a19576981
+Patch0:		%{name}-poppler-0.16.patch
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 BuildRequires:	glib-devel
@@ -22,6 +23,7 @@ keyboard interaction.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
@@ -30,6 +32,7 @@ LDFLAGS="%{rpmldflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
