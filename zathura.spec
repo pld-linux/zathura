@@ -9,8 +9,8 @@ Source0:	http://pwmt.org/attachments/download/31/%{name}-%{version}.tar.gz
 Patch0:		%{name}-poppler-0.16.patch
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
-BuildRequires:	glib-devel
 BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig
 BuildRequires:	poppler-glib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
