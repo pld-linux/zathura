@@ -1,12 +1,12 @@
 Summary:	A vi-like pdf reader
+Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.0.8.2
+Version:	0.0.8.3
 Release:	1
 License:	BSD-like
 Group:		Applications
-Source0:	http://pwmt.org/attachments/download/31/%{name}-%{version}.tar.gz
-# Source0-md5:	b63750f8993e0f139162101a19576981
-Patch0:		%{name}-poppler-0.16.patch
+Source0:	https://pwmt.org/download/%{name}-%{version}.tar.gz
+# Source0-md5:	95b1d02593e7055f08da3825ad54954d
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 BuildRequires:	gtk+2-devel
@@ -21,9 +21,15 @@ zathura is an application that provides a minimalistic and space
 saving interface as well as an easy usage that mainly focuses on
 keyboard interaction.
 
+%description -l pl.UTF-8
+zathura jest wysoko konfigurowalnym i funkcjonalnym wyświetlaczem PDF
+opartym na bibliotece renderującej poppler i zestawie narzędziowym
+gtk+. zathura jest aplikacją, która udostępnia minimalistyczny i nie
+zajmujący dużo miejsca interfejs, który jednocześnie jest prosty w
+użyciu. Interfejs skupia się głównie na interakcji klawiaturowej.
+
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
