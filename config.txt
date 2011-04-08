@@ -1,0 +1,29 @@
+Configuration
+zathurarc
+
+The other way is to use a zathurarc file (whose path is defined in the config.h 
+file, default: ~/.config/zathura/zathurarc) to change look and key bindings. 
+There are two commands that can be used in the rc file:
+set [id] [value]
+map [key] [function] [argument] [mode]
+As an example the rc file could look like this:
+# zathurarc
+ 
+# colors
+set statusbar_bgcolor #00FF00
+set statusbar_fgcolor red
+ 
+# settings
+set height 1024
+set width 768
+set adjust_open width
+ 
+# key bindings
+map <PageUp> navigate previous
+map <PageDown> navigate next
+ 
+map + zoom in
+map - zoom out
+ 
+map <C-q> quit
+
