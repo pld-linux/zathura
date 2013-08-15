@@ -2,12 +2,12 @@ Summary:	A vi-like pdf reader
 Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
 Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.2.3
+Version:	0.2.4
 Release:	1
 License:	BSD-like
 Group:		Applications
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.gz
-# Source0-md5:	c0265fd9fa64a37b01d729efb75a7c32
+# Source0-md5:	935c6e15f5b7688bf4024ec7fe45f064
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	girara-devel >= 0.1.6
