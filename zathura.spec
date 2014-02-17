@@ -2,17 +2,21 @@ Summary:	A vi-like pdf reader
 Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
 Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.2.6
+Version:	0.2.7
 Release:	1
 License:	BSD-like
 Group:		Applications
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.gz
-# Source0-md5:	d155a66ec1862550dfde5a50e3dd6d01
+# Source0-md5:	53124af80e974283a6678319a62e6666
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	girara-devel >= 0.1.8
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gtk+3-devel
+BuildRequires:	intltool
+BuildRequires:	libmagic-devel
 BuildRequires:	pkgconfig
+BuildRequires:	python-docutils
 BuildRequires:	sqlite3-devel >= 3.5.9
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,6 +71,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 	DESTDIR=$RPM_BUILD_ROOT \
 	LIBDIR=%{_libdir}
 
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/ta_IN $RPM_BUILD_ROOT%{_localedir}/ta
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/uk_UA $RPM_BUILD_ROOT%{_localedir}/uk
 
@@ -80,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE README config.txt
 %attr(755,root,root) %{_bindir}/zathura
 %{_desktopdir}/%{name}.desktop
+%{_datadir}/dbus-1/interfaces/org.pwmt.zathura.xml
 %{_mandir}/man1/zathura.1*
 %{_mandir}/man5/zathurarc.5*
 %dir %{_libdir}/zathura
