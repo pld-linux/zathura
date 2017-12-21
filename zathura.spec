@@ -2,16 +2,16 @@ Summary:	A vi-like pdf reader
 Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
 Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.3.7
+Version:	0.3.8
 Release:	1
 License:	BSD-like
 Group:		Applications
 Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.gz
-# Source0-md5:	b2c9e23e9f494e1ced5069f850dba673
+# Source0-md5:	2885c198f8497c69ae4158e00a0059e7
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
-BuildRequires:	girara-devel >= 0.2.7
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	girara-devel >= 0.2.8
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.6
 BuildRequires:	intltool
 BuildRequires:	libmagic-devel
@@ -19,8 +19,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	zlib-devel
-Requires:	girara >= 0.2.7
-Requires:	glib2 >= 1:2.32.0
+Requires:	girara >= 0.2.8
+Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.6
 Requires:	sqlite3 >= 3.5.9
 Suggests:	zathura-pdf-poppler
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc LICENSE README config.txt
 %attr(755,root,root) %{_bindir}/zathura
 %{_desktopdir}/%{name}.desktop
-%{_datadir}/appdata/zathura.appdata.xml
+%{_datadir}/metainfo/zathura.appdata.xml
 %{_datadir}/dbus-1/interfaces/org.pwmt.zathura.xml
 %{_mandir}/man1/zathura.1*
 %{_mandir}/man5/zathurarc.5*
