@@ -2,12 +2,12 @@ Summary:	A vi-like pdf reader
 Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
 Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.3.9
+Version:	0.4.0
 Release:	1
 License:	BSD-like
 Group:		Applications
 Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	07a88abb12e82e65817bdc92d7af106c
+# Source0-md5:	4667f2b8540548286319563ac80eaaaa
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
@@ -71,7 +71,7 @@ cp %{SOURCE1} config.txt
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT{%{_libdir}/%{name},%{_iconsdir}/hicolor/128x128/apps}
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 
 %meson_install -C build
 
@@ -79,8 +79,6 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/%{name},%{_iconsdir}/hicolor/128x128/apps}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/ta_IN $RPM_BUILD_ROOT%{_localedir}/ta
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/uk_UA $RPM_BUILD_ROOT%{_localedir}/uk
-
-%{__mv} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/128x128/{,/apps/}org.pwmt.zathura.png
 
 %find_lang %{name}
 
