@@ -2,12 +2,12 @@ Summary:	A vi-like pdf reader
 Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
 Summary(pl.UTF-8):	Czytnik pdf podobny do vi
 Name:		zathura
-Version:	0.4.0
+Version:	0.4.1
 Release:	1
 License:	BSD-like
 Group:		Applications
 Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	4667f2b8540548286319563ac80eaaaa
+# Source0-md5:	50495884064e3c127304a5b6390c836c
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
