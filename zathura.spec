@@ -1,6 +1,7 @@
-Summary:	A vi-like pdf reader
-Summary(hu.UTF-8):	Egy vi-szerű pdf olvasó
-Summary(pl.UTF-8):	Czytnik pdf podobny do vi
+# TODO: synctex >= 1.19.0 (from recent TeXLive distribution)
+Summary:	A vi-like PDF reader
+Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
+Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
 Version:	0.4.1
 Release:	1
@@ -11,11 +12,14 @@ Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
+# C11
+BuildRequires:	gcc >= 6:4.7
 BuildRequires:	girara-devel >= 0.2.9
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
 BuildRequires:	libmagic-devel
+BuildRequires:	libseccomp-devel
 BuildRequires:	meson >= 0.45
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
@@ -33,32 +37,62 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 zathura is a highly customizable and functional PDF viewer based on
-the poppler rendering library and the gtk+ toolkit. The idea behind
+the poppler rendering library and the GTK+ toolkit. The idea behind
 zathura is an application that provides a minimalistic and space
 saving interface as well as an easy usage that mainly focuses on
 keyboard interaction.
 
 %description -l hu.UTF-8
 zathura egy magas szinten konfigurálható és funkcionális PDF olvasó a
-poppler és gtk+ könyvtárako alapulva. A zathura célja, hogy egy olyan
+poppler és GTK+ könyvtárako alapulva. A zathura célja, hogy egy olyan
 alkalmazás legyen, amely minimalista és terület-takarékos felületet
 biztosítson, amennyire lehet, és könnyen lehessen használni, főleg
 billentyűzet segítségével.
 
 %description -l pl.UTF-8
-zathura jest wysoko konfigurowalnym i funkcjonalnym wyświetlaczem PDF
+zathura jest wysoko konfigurowalnym i funkcjonalnym czytnikiem PDF
 opartym na bibliotece renderującej poppler i zestawie narzędziowym
-gtk+. zathura jest aplikacją, która udostępnia minimalistyczny i nie
+GTK+. zathura jest aplikacją, która udostępnia minimalistyczny i nie
 zajmujący dużo miejsca interfejs, który jednocześnie jest prosty w
 użyciu. Interfejs skupia się głównie na interakcji klawiaturowej.
 
 %package devel
 Summary:	Header files for zathura
+Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+# doesn't require base
 
 %description devel
 Header files for zathura.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe aplikacji zathura.
+
+%package -n bash-completion-zathura
+Summary:	Bash completion for zathura command line
+Summary(pl.UTF-8):	Bashowe dopełnianie linii poleceń programu zathura
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	bash-completion >= 2.0
+
+%description -n bash-completion-zathura
+Bash completion for zathura command line.
+
+%description -n bash-completion-zathura -l pl.UTF-8
+Bashowe dopełnianie linii poleceń programu zathura.
+
+%package -n zsh-completion-zathura
+Summary:	ZSH completion for zathura command line
+Summary(pl.UTF-8):	Dopełnianie linii poleceń programu zathura dla powłoki ZSH
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	zsh
+
+%description -n zsh-completion-zathura
+ZSH completion for zathura command line.
+
+%description -n zsh-completion-zathura -l pl.UTF-8
+Dopełnianie linii poleceń programu zathura dla powłoki ZSH.
 
 %prep
 %setup -q
@@ -66,6 +100,7 @@ cp %{SOURCE1} config.txt
 
 %build
 %meson build
+
 %meson_build -C build
 
 %install
@@ -79,6 +114,10 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/ta_IN $RPM_BUILD_ROOT%{_localedir}/ta
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/uk_UA $RPM_BUILD_ROOT%{_localedir}/uk
+
+# adapt to PLD location
+install -d $RPM_BUILD_ROOT%{zsh_compdir}
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/zsh/vendor-completions/_zathura $RPM_BUILD_ROOT%{zsh_compdir}
 
 %find_lang %{name}
 
@@ -107,3 +146,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_includedir}/zathura
 %{_pkgconfigdir}/zathura.pc
+
+%files -n bash-completion-zathura
+%defattr(644,root,root,755)
+%{bash_compdir}/zathura
+
+%files -n zsh-completion-zathura
+%defattr(644,root,root,755)
+%{zsh_compdir}/_zathura
