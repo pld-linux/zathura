@@ -1,4 +1,3 @@
-# TODO: synctex >= 1.19.0 (from recent TeXLive distribution)
 Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
@@ -26,12 +25,14 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
 BuildRequires:	rpmbuild(macros) >= 1.727
 BuildRequires:	sqlite3-devel >= 3.5.9
+BuildRequires:	synctex-devel >= 1.19
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	girara >= 0.2.9
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
 Requires:	sqlite3 >= 3.5.9
+Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
