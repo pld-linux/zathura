@@ -2,24 +2,25 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.4.1
-Release:	2
+Version:	0.4.3
+Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	50495884064e3c127304a5b6390c836c
+# Source0-md5:	ddc915b8d3e5217bf404cd4b5f20265d
 Source1:	config.txt
+Patch0:		%{name}-hicolor_svg.patch
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
 BuildRequires:	gcc >= 6:4.7
-BuildRequires:	girara-devel >= 0.2.9
+BuildRequires:	girara-devel >= 0.3.2
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
 BuildRequires:	libmagic-devel
 BuildRequires:	libseccomp-devel
-BuildRequires:	meson >= 0.45
+BuildRequires:	meson >= 0.47
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
@@ -27,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.727
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.2.9
+Requires:	girara >= 0.3.2
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
@@ -97,6 +98,7 @@ Dopełnianie linii poleceń programu zathura dla powłoki ZSH.
 
 %prep
 %setup -q
+%patch0 -p1
 cp %{SOURCE1} config.txt
 
 %build
@@ -139,6 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
 %{_datadir}/dbus-1/interfaces/org.pwmt.zathura.xml
 %{_iconsdir}/hicolor/*/apps/org.pwmt.zathura.png
+%{_iconsdir}/hicolor/scalable/apps/org.pwmt.zathura.svg
 %{_mandir}/man1/zathura.1*
 %{_mandir}/man5/zathurarc.5*
 %dir %{_libdir}/zathura

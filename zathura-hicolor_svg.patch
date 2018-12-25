@@ -1,0 +1,11 @@
+--- zathura-0.4.3/data/meson.build.orig	2018-12-25 17:48:33.335450275 +0100
++++ zathura-0.4.3/data/meson.build	2018-12-25 17:48:42.002210140 +0100
+@@ -7,7 +7,7 @@
+ )
+ 
+ install_data('org.pwmt.zathura.xml', install_dir: dbusinterfacesdir)
+-install_data('org.pwmt.zathura.svg', install_dir: join_paths(datadir, 'icons', 'scalable', 'apps'))
++install_data('org.pwmt.zathura.svg', install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'))
+ 
+ rsvg_convert = find_program('rsvg-convert', required: get_option('convert-icon'), native: true)
+ if rsvg_convert.found()
