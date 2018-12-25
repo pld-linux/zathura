@@ -63,6 +63,7 @@ Summary:	Header files for zathura
 Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
 # doesn't require base
+Requires:	girara-devel >= 0.3.2
 
 %description devel
 Header files for zathura.
