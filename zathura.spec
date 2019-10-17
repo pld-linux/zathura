@@ -2,19 +2,19 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.4.3
+Version:	0.4.4
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
-Source0:	http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	ddc915b8d3e5217bf404cd4b5f20265d
+Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
+# Source0-md5:	7c5ced9ff28edac453bff67811d502e1
 Source1:	config.txt
 Patch0:		%{name}-hicolor_svg.patch
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
 BuildRequires:	gcc >= 6:4.7
-BuildRequires:	girara-devel >= 0.3.2
+BuildRequires:	girara-devel >= 0.3.3
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
@@ -28,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.727
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.3.2
+Requires:	girara >= 0.3.3
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
@@ -36,6 +36,8 @@ Requires:	sqlite3 >= 3.5.9
 Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define fishdir %{_datadir}/fish/completions
 
 %description
 zathura is a highly customizable and functional PDF viewer based on
@@ -77,6 +79,9 @@ Summary(pl.UTF-8):	Bashowe dopełnianie linii poleceń programu zathura
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 2.0
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n bash-completion-zathura
 Bash completion for zathura command line.
@@ -84,12 +89,31 @@ Bash completion for zathura command line.
 %description -n bash-completion-zathura -l pl.UTF-8
 Bashowe dopełnianie linii poleceń programu zathura.
 
+%package -n fish-completion-zathura
+Summary:	fish-completion for zathura
+Summary(pl.UTF-8):	Uzupełnianie nazw w fish dla zathura
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	fish
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description -n fish-completion-zathura
+fish-completion for zathura.
+
+%description -n fish-completion-zathura -l pl.UTF-8
+Pakiet ten dostarcza uzupełnianie nazw w fish dla zathura.
+
 %package -n zsh-completion-zathura
 Summary:	ZSH completion for zathura command line
 Summary(pl.UTF-8):	Dopełnianie linii poleceń programu zathura dla powłoki ZSH
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	zsh
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n zsh-completion-zathura
 ZSH completion for zathura command line.
@@ -118,10 +142,6 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/ta_IN $RPM_BUILD_ROOT%{_localedir}/ta
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/uk_UA $RPM_BUILD_ROOT%{_localedir}/uk
-
-# adapt to PLD location
-install -d $RPM_BUILD_ROOT%{zsh_compdir}
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/zsh/vendor-completions/_zathura $RPM_BUILD_ROOT%{zsh_compdir}
 
 %find_lang %{name}
 
@@ -155,6 +175,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -n bash-completion-zathura
 %defattr(644,root,root,755)
 %{bash_compdir}/zathura
+
+%files -n fish-completion-zathura
+%defattr(644,root,root,755)
+%{fishdir}/zathura.fish
 
 %files -n zsh-completion-zathura
 %defattr(644,root,root,755)
