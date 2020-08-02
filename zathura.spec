@@ -2,14 +2,13 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.4.5
+Version:	0.4.6
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
-# Source0-md5:	3ff550e83b5e4fb2044639bd0b93587c
+# Source0-md5:	a2e9dd9f5f4349797baf75661e637f6f
 Source1:	config.txt
-Patch0:		%{name}-hicolor_svg.patch
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
@@ -37,7 +36,7 @@ Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define fishdir %{_datadir}/fish/completions
+%define fishdir %{_datadir}/fish/vendor_completions.d
 
 %description
 zathura is a highly customizable and functional PDF viewer based on
@@ -123,7 +122,6 @@ Dopełnianie linii poleceń programu zathura dla powłoki ZSH.
 
 %prep
 %setup -q
-%patch0 -p1
 cp %{SOURCE1} config.txt
 
 %build
@@ -156,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc LICENSE README config.txt
+%doc LICENSE README.md config.txt
 %attr(755,root,root) %{_bindir}/zathura
 %{_desktopdir}/org.pwmt.zathura.desktop
 %{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
