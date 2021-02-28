@@ -78,9 +78,7 @@ Summary(pl.UTF-8):	Bashowe dopełnianie linii poleceń programu zathura
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 2.0
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n bash-completion-zathura
 Bash completion for zathura command line.
@@ -94,9 +92,7 @@ Summary(pl.UTF-8):	Uzupełnianie nazw w fish dla zathura
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	fish
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n fish-completion-zathura
 fish-completion for zathura.
@@ -110,9 +106,7 @@ Summary(pl.UTF-8):	Dopełnianie linii poleceń programu zathura dla powłoki ZSH
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	zsh
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n zsh-completion-zathura
 ZSH completion for zathura command line.
