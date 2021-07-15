@@ -2,18 +2,18 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.4.6
+Version:	0.4.8
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
-# Source0-md5:	a2e9dd9f5f4349797baf75661e637f6f
+# Source0-md5:	ea5457f064bdcfb1fda1f6f27bafbeb7
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
 BuildRequires:	gcc >= 6:4.7
-BuildRequires:	girara-devel >= 0.3.3
+BuildRequires:	girara-devel >= 0.3.6
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
@@ -24,10 +24,11 @@ BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
 BuildRequires:	rpmbuild(macros) >= 1.727
+BuildRequires:	sphinx-pdg
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.3.3
+Requires:	girara >= 0.3.6
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
@@ -64,7 +65,7 @@ Summary:	Header files for zathura
 Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
 # doesn't require base
-Requires:	girara-devel >= 0.3.2
+Requires:	girara-devel >= 0.3.6
 
 %description devel
 Header files for zathura.
