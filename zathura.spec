@@ -23,7 +23,7 @@ BuildRequires:	meson >= 0.47
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
-BuildRequires:	rpmbuild(macros) >= 1.727
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sphinx-pdg
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
@@ -122,14 +122,14 @@ cp %{SOURCE1} config.txt
 %build
 %meson build
 
-%meson_build -C build
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 
-%meson_install -C build
+%ninja_install -C build
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/id_ID $RPM_BUILD_ROOT%{_localedir}/id
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
