@@ -3,7 +3,7 @@ Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
 Version:	0.4.8
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
@@ -32,7 +32,7 @@ Requires:	girara >= 0.3.6
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
-Requires:	sqlite3 >= 3.5.9
+Requires:	sqlite3-libs >= 3.5.9
 Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
