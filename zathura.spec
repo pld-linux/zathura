@@ -23,6 +23,7 @@ BuildRequires:	meson >= 0.56
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sphinx-pdg
 BuildRequires:	sqlite3-devel >= 3.5.9
