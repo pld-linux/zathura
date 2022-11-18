@@ -18,6 +18,8 @@ BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
 BuildRequires:	libmagic-devel
+# rsvg-convert for png icons
+BuildRequires:	librsvg
 BuildRequires:	libseccomp-devel
 BuildRequires:	meson >= 0.56
 BuildRequires:	ninja
@@ -155,6 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/org.pwmt.zathura.desktop
 %{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
 %{_datadir}/dbus-1/interfaces/org.pwmt.zathura.xml
+%{_iconsdir}/hicolor/*x*/apps/org.pwmt.zathura.png
 %{_iconsdir}/hicolor/scalable/apps/org.pwmt.zathura.svg
 %{_mandir}/man1/zathura.1*
 %{_mandir}/man5/zathurarc.5*
