@@ -13,6 +13,7 @@ URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
 BuildRequires:	gcc >= 6:4.7
+BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 0.3.7
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
