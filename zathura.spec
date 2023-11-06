@@ -31,6 +31,7 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sphinx-pdg
 BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	girara >= 0.3.7
 Requires:	glib2 >= 1:2.50.0
@@ -147,9 +148,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %update_icon_cache hicolor
+%update_desktop_database_post
 
 %postun
 %update_icon_cache hicolor
+%update_desktop_database_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
