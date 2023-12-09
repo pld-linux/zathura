@@ -11,7 +11,7 @@ Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{versio
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
-# C11
+# C17
 BuildRequires:	gcc >= 6:8.1
 BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 0.4.1
