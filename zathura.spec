@@ -2,27 +2,29 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.5.2
+Version:	0.5.3
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
-# Source0-md5:	4e1fc9cf4c7a66665b66e276f1b19cf9
+# Source0-md5:	7934edd0d1a33d0b46acbe7065ab7cf3
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C11
-BuildRequires:	gcc >= 6:4.7
+BuildRequires:	gcc >= 6:8.1
 BuildRequires:	gettext-tools
-BuildRequires:	girara-devel >= 0.3.7
+BuildRequires:	girara-devel >= 0.4.1
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool
+BuildRequires:	json-glib-devel
 BuildRequires:	libmagic-devel
 # rsvg-convert for png icons
 BuildRequires:	librsvg
-BuildRequires:	libseccomp-devel
-BuildRequires:	meson >= 0.56
+BuildRequires:	libseccomp-devel >= 2.5.5
+BuildRequires:	linux-libc-headers >= 7:6.6.0
+BuildRequires:	meson >= 0.61
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
@@ -33,10 +35,11 @@ BuildRequires:	sqlite3-devel >= 3.5.9
 BuildRequires:	synctex-devel >= 1.19
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.3.7
+Requires:	girara >= 0.4.1
 Requires:	glib2 >= 1:2.50.0
 Requires:	gtk+3 >= 3.22
 Requires:	hicolor-icon-theme
+Requires:	libseccomp >= 2.5.5
 Requires:	sqlite3-libs >= 3.5.9
 Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
