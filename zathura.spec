@@ -2,21 +2,21 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.5.4
+Version:	0.5.6
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
-Source0:	https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/zathura-%{version}.tar.gz
-# Source0-md5:	a929f3366a46bb05d623c299276f414b
+Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
+# Source0-md5:	ef8224b711aa5fa327ad604584e797fe
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C17
 BuildRequires:	gcc >= 6:8.1
 BuildRequires:	gettext-tools
-BuildRequires:	girara-devel >= 0.4.1
-BuildRequires:	glib2-devel >= 1:2.50.0
-BuildRequires:	gtk+3-devel >= 3.22
+BuildRequires:	girara-devel >= 0.4.3
+BuildRequires:	glib2-devel >= 1:2.72.0
+BuildRequires:	gtk+3-devel >= 3.24
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
 BuildRequires:	libmagic-devel
@@ -31,16 +31,18 @@ BuildRequires:	python-docutils
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sphinx-pdg
-BuildRequires:	sqlite3-devel >= 3.5.9
+BuildRequires:	sqlite3-devel >= 3.6.23
 BuildRequires:	synctex-devel >= 1.19
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.4.1
-Requires:	glib2 >= 1:2.50.0
-Requires:	gtk+3 >= 3.22
+Requires:	girara >= 0.4.3
+Requires:	glib2 >= 1:2.72.0
+Requires:	gtk+3 >= 3.24
 Requires:	hicolor-icon-theme
 Requires:	libseccomp >= 2.5.5
-Requires:	sqlite3-libs >= 3.5.9
+Requires:	sqlite3-libs >= 3.6.23
 Requires:	synctex >= 1.19
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -73,7 +75,7 @@ Summary:	Header files for zathura
 Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
 # doesn't require base
-Requires:	girara-devel >= 0.3.7
+Requires:	girara-devel >= 0.4.3
 
 %description devel
 Header files for zathura.
