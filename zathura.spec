@@ -1,3 +1,6 @@
+%define		_zathura_plugin_api	6
+%define		_zathura_plugin_abi	7
+
 Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
@@ -44,6 +47,8 @@ Requires:	hicolor-icon-theme
 Requires:	libseccomp >= 2.5.5
 Requires:	sqlite3-libs >= 3.6.23
 Requires:	synctex >= 1.19
+Provides:	zathura(plugin-api) = %_zathura_plugin_api
+Provides:	zathura(plugin-abi) = %_zathura_plugin_abi
 Suggests:	zathura-pdf-poppler
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -128,6 +133,18 @@ Dopełnianie linii poleceń programu zathura dla powłoki ZSH.
 %prep
 %setup -q
 cp %{SOURCE1} config.txt
+
+PLUGIN_API=`sed -n -e '/^plugin_api_version[[:space:]]*=/ s/[^0-9]*\([0-9]*\).*/\1/ p' meson.build`
+PLUGIN_ABI=`sed -n -e '/^plugin_abi_version[[:space:]]*=/ s/[^0-9]*\([0-9]*\).*/\1/ p' meson.build`
+if [ "$PLUGIN_API" != "%_zathura_plugin_api" ] || [ "$PLUGIN_ABI" != "%_zathura_plugin_abi" ]; then
+	if [ "$PLUGIN_API" != "%_zathura_plugin_api" ]; then
+		echo "Set %%_zathura_plugin_api to $PLUGIN_API and rerun."
+	fi
+	if [ "$PLUGIN_ABI" != "%_zathura_plugin_abi" ]; then
+		echo "Set %%_zathura_plugin_abi to $PLUGIN_ABI and rerun."
+	fi
+	exit 1
+fi
 
 %build
 %meson build
