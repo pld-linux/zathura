@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	synctex		# SynxTeX support
+
 %define		_zathura_plugin_api	6
 %define		_zathura_plugin_abi	7
 
@@ -5,12 +9,12 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.5.11
+Version:	0.5.12
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	5565b692ce22786236f814feb12e555a
+# Source0-md5:	c3ad6f2728607b17056be8b98d6d23a4
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
@@ -18,7 +22,7 @@ BuildRequires:	cairo-devel
 BuildRequires:	gcc >= 6:8.1
 BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 0.4.5
-BuildRequires:	glib2-devel >= 1:2.72.0
+BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gtk+3-devel >= 3.24
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
@@ -27,26 +31,26 @@ BuildRequires:	libmagic-devel
 BuildRequires:	librsvg
 BuildRequires:	libseccomp-devel >= 2.5.5
 BuildRequires:	linux-libc-headers >= 7:6.6.0
-BuildRequires:	meson >= 0.61
+BuildRequires:	meson >= 1
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sphinx-pdg
 BuildRequires:	sqlite3-devel >= 3.6.23
-BuildRequires:	synctex-devel >= 1.19
+%{?with_synctex:BuildRequires:	synctex-devel >= 2}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	girara >= 0.4.5
-Requires:	glib2 >= 1:2.72.0
+Requires:	glib2 >= 1:2.76
 Requires:	gtk+3 >= 3.24
 Requires:	hicolor-icon-theme
 Requires:	libseccomp >= 2.5.5
 Requires:	sqlite3-libs >= 3.6.23
-Requires:	synctex >= 1.19
+%{?with_synctex:Requires:	synctex >= 2}
 Provides:	zathura(plugin-api) = %_zathura_plugin_api
 Provides:	zathura(plugin-abi) = %_zathura_plugin_abi
 Suggests:	zathura-pdf-poppler
@@ -147,16 +151,21 @@ if [ "$PLUGIN_API" != "%_zathura_plugin_api" ] || [ "$PLUGIN_ABI" != "%_zathura_
 fi
 
 %build
-%meson build
+%meson \
+	-Dconvert-icon=enabled \
+	-Dlandlock=enabled \
+	-Dmanpages=enabled \
+	-Dseccomp=enabled \
+	-Dsynctex=%{__enabled_disabled synctex} \
+	-Dtests=disabled
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 
-%ninja_install -C build
+%meson_install
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/id_ID $RPM_BUILD_ROOT%{_localedir}/id
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
