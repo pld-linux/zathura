@@ -9,19 +9,19 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	0.5.14
+Version:	2026.01.30
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	c6f66c038285e176eeb4724169fd4648
+# Source0-md5:	800615c510ef90d871911073a3c3201e
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
 # C17
 BuildRequires:	gcc >= 6:8.1
 BuildRequires:	gettext-tools
-BuildRequires:	girara-devel >= 0.4.5
+BuildRequires:	girara-devel >= 2026.01.30
 BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gtk+3-devel >= 3.24
 BuildRequires:	intltool
@@ -31,7 +31,7 @@ BuildRequires:	libmagic-devel
 BuildRequires:	librsvg
 BuildRequires:	libseccomp-devel >= 2.5.5
 BuildRequires:	linux-libc-headers >= 7:6.6.0
-BuildRequires:	meson >= 1
+BuildRequires:	meson >= 1.5
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python-docutils
@@ -44,7 +44,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	girara >= 0.4.5
+Requires:	girara >= 2026.01.30
 Requires:	glib2 >= 1:2.76
 Requires:	gtk+3 >= 3.24
 Requires:	hicolor-icon-theme
@@ -84,7 +84,7 @@ Summary:	Header files for zathura
 Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
 # doesn't require base
-Requires:	girara-devel >= 0.4.5
+Requires:	girara-devel >= 2026.01.30
 
 %description devel
 Header files for zathura.
@@ -191,7 +191,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/zathura
 %attr(755,root,root) %{_bindir}/zathura-sandbox
 %{_desktopdir}/org.pwmt.zathura.desktop
-%{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
+%{_datadir}/metainfo/org.pwmt.zathura.metainfo.xml
 %{_datadir}/dbus-1/interfaces/org.pwmt.zathura.xml
 %{_iconsdir}/hicolor/*x*/apps/org.pwmt.zathura.png
 %{_iconsdir}/hicolor/scalable/apps/org.pwmt.zathura.svg
