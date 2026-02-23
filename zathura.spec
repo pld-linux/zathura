@@ -9,12 +9,12 @@ Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	2026.02.03
+Version:	2026.02.22
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	966da74f73f94cfa4fe94578f5cc16b6
+# Source0-md5:	73423da9144f54d32a4d803bf31fafcf
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
@@ -167,10 +167,8 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
 
 %meson_install
 
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/id_ID $RPM_BUILD_ROOT%{_localedir}/id
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/no $RPM_BUILD_ROOT%{_localedir}/nb
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/ta_IN $RPM_BUILD_ROOT%{_localedir}/ta
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/uk_UA $RPM_BUILD_ROOT%{_localedir}/uk
 
 %find_lang org.pwmt.zathura
 
