@@ -18,8 +18,8 @@ Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
-# C23
-BuildRequires:	gcc >= 6:9
+# C23 as -std=c23
+BuildRequires:	gcc >= 6:14
 BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 2026.02.03
 BuildRequires:	glib2-devel >= 1:2.76
