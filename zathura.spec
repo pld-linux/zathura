@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	synctex		# SynxTeX support
 
-%define		_zathura_plugin_api	6
-%define		_zathura_plugin_abi	7
+%define		_zathura_plugin_api	7
+%define		_zathura_plugin_abi	8
 
 Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	2026.05.20
+Version:	2026.07.02
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	6558c58a1dbdf65fd9ee431844ea4c49
+# Source0-md5:	06c36ad5ec6b87706072465bcb52f93f
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
@@ -23,7 +23,7 @@ BuildRequires:	gcc >= 6:14
 BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 2026.02.03
 BuildRequires:	glib2-devel >= 1:2.76
-BuildRequires:	gtk+3-devel >= 3.24
+BuildRequires:	gtk4-devel >= 4.12
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
 BuildRequires:	libmagic-devel
@@ -38,18 +38,19 @@ BuildRequires:	python-docutils
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	sphinx-pdg
-BuildRequires:	sqlite3-devel >= 3.6.23
+BuildRequires:	sqlite3-devel >= 3.35.0
 %{?with_synctex:BuildRequires:	synctex-devel >= 2}
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xxHash-devel
 BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	girara >= 2026.02.03
 Requires:	glib2 >= 1:2.76
-Requires:	gtk+3 >= 3.24
+Requires:	gtk4 >= 4.12
 Requires:	hicolor-icon-theme
 Requires:	libseccomp >= 2.5.5
-Requires:	sqlite3-libs >= 3.6.23
+Requires:	sqlite3-libs >= 3.35.0
 %{?with_synctex:Requires:	synctex >= 2}
 Provides:	zathura(plugin-api) = %_zathura_plugin_api
 Provides:	zathura(plugin-abi) = %_zathura_plugin_abi
