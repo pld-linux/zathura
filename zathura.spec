@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	synctex		# SynxTeX support
 
-%define		_zathura_plugin_api	7
-%define		_zathura_plugin_abi	8
+%define		_zathura_plugin_api	8
+%define		_zathura_plugin_abi	9
 
 Summary:	A vi-like PDF reader
 Summary(hu.UTF-8):	Egy vi-szerű PDF olvasó
 Summary(pl.UTF-8):	Czytnik PDF podobny do vi
 Name:		zathura
-Version:	2026.07.08
+Version:	2026.07.18
 Release:	1
 License:	BSD-like
 Group:		Applications/Text
 Source0:	https://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
-# Source0-md5:	8e246ba45bc12327c764cbef1d9a3149
+# Source0-md5:	f6d54dcc3b0451422725c2d1cdb100de
 Source1:	config.txt
 URL:		http://pwmt.org/projects/zathura
 BuildRequires:	cairo-devel
@@ -22,7 +22,7 @@ BuildRequires:	cairo-devel
 BuildRequires:	gcc >= 6:14
 BuildRequires:	gettext-tools
 BuildRequires:	girara-devel >= 2026.07.07
-BuildRequires:	glib2-devel >= 1:2.76
+BuildRequires:	glib2-devel >= 1:2.84
 BuildRequires:	gtk4-devel >= 4.12
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
@@ -46,7 +46,7 @@ BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	girara >= 2026.07.07
-Requires:	glib2 >= 1:2.76
+Requires:	glib2 >= 1:2.84
 Requires:	gtk4 >= 4.12
 Requires:	hicolor-icon-theme
 Requires:	libseccomp >= 2.5.5
@@ -85,6 +85,7 @@ Summary:	Header files for zathura
 Summary(pl.UTF-8):	Pliki nagłówkowe aplikacji zathura
 Group:		Development/Libraries
 # doesn't require base
+Requires:	cairo-devel
 Requires:	girara-devel >= 2026.07.07
 
 %description devel
